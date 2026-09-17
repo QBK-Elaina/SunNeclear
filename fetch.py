@@ -7,21 +7,15 @@
 Fetch the numbers once, save the raw reply to data/, and never fetch again.
 
     uv run fetch.py
-
-Change URL and FILE. The default is the Hong Kong Observatory's daily mean
-temperature for 2026, so the template runs before you have touched it and you
-can see what a file looks like when it arrives. It is an example, not your
-phenomenon: handing it in unchanged is handing in nothing.
 """
 
 from pathlib import Path
 
 import requests
 
-URL = ("https://data.weather.gov.hk/weatherAPI/opendata/opendata.php"
-       "?dataType=CLMTEMP&rformat=csv&station=HKO&year=2026")      # CHANGE ME
-FILE = "hko-daily-mean-temperature-2026.csv"                          # CHANGE ME: say what it is,
-                                                                      # keep the publisher's extension
+URL = "https://www.sidc.be/SILSO/DATA/SN_m_tot_V2.0.csv"      # 国际太阳黑子指数中心（SILSO）月度数据
+FILE = "sunspots.csv"                                         # 保存的原始文件名
+
 HERE = Path(__file__).parent
 DATA = HERE / "data"
 
@@ -36,7 +30,7 @@ def fetch(url, path):
     print(f"asking {url}")
     reply = requests.get(url, timeout=60, headers={"User-Agent": "SD5913 PolyU student"})
     reply.raise_for_status()
-    path.write_bytes(reply.content)      # the raw reply, byte for byte: what arrived is what gets committed
+    path.write_bytes(reply.content)      # the raw reply, byte for byte
     print(f"saved data/{path.name} ({path.stat().st_size // 1024} KB). Now: git add data")
     return path
 
