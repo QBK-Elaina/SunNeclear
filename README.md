@@ -1,34 +1,23 @@
-# The phenomenon
+Markdown
+# 太阳活动周期与黑子数可视化 (Solar Activity Cycle)
 
-<!-- This is the SD5913 assignment 2 template. Everything in this file is yours to
-replace, and the check counts words: comments like this one are not words, so
-delete each one as you write. Start with the heading: name the phenomenon.
+## 现象描述 (The Phenomenon)
+本可视化项目关注的是**太阳黑子数（Sunspot Number）及其背后的 11 年太阳活动周期**。太阳核心的核聚变能量释放、磁场变动以及太阳风暴的频繁程度，都会在太阳表面以黑子多少的形式周期性地表现出来。这是一个跨越数百年的天然宏观规律——无论人类是否观测它，太阳每隔大约 11 年就会经历一次从平静到活跃再到平静的往复。通过将长达数个世纪的观测数据绘制成图，我们可以直观地看到这种巨大的宇宙韵律。
 
-Then, in this order, at least 150 words in total.
+## 数据来源 (The Source)
+* **数据提供方**：国际太阳黑子指数中心（SILSO, Royal Observatory of Belgium）
+* **数据链接**：[https://www.sidc.be/SILSO/datafiles](https://www.sidc.be/SILSO/datafiles)
+* **文件说明**：数据文件 `data/sunspots.csv` 记录了自 1749 年 1 月至今的月度平均总太阳黑子数。每一行代表一个月，包含年份、月份、平均黑子数及观测标准差等字段。
 
-New to folders, paths, or the files here whose names start with a dot? Read
-https://github.com/sd5913/pfad/blob/2026/reference/files.md first. Ten minutes. -->
+## 可视化结果 (The Picture)
+![Solar Activity Cycle](out/plot.png)
 
-![what the picture is](out/plot.png)
+## 图表展示了什么与隐藏了什么 (What it shows and what it hides)
+* **展示了什么**：图表清晰地呈现了近 270 年来月平均太阳黑子数的起伏波峰与波谷，完美展现了标志性的 11 年周期规律，以及不同周期之间活跃强度的显著差异。
+* **隐藏了什么**：该图通过月度平均值平滑掉了太阳自转（约 27 天周期）带来的短期黑子数量剧烈波动；同时，它将整个太阳作为一个整体来看待，隐藏了太阳南北半球活动不对称性以及太阳表面具体纬度的分布细节。
 
-## The phenomenon
+## 如何运行 (How to run it)
+本项目完全可以在无网络环境下运行（原始数据已缓存在 `data/` 中）。只需在终端执行以下命令：
 
-<!-- What goes up and down, and why you looked at it. -->
-
-## The source
-
-<!-- A link to the page or endpoint the file came from, and one line on what is in
-the file: how many rows, what a row means, what the units are. -->
-
-## What the picture shows
-
-<!-- Two or three sentences. Including what it hides: every transformation throws
-something away, and naming what yours threw away is the easiest way to sound like
-you know what you did. -->
-
-## Run it
-
-```
-uv run fetch.py
+```bash
 uv run plot.py
-```
